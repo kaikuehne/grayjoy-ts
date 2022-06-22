@@ -10,8 +10,10 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
-      - name: Install
+      - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Install
         uses: actions/setup-node@v3
         with:
           node-version: 14
