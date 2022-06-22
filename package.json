@@ -10,7 +10,7 @@
     "esbuild": "^0.14.47"
   },
   "scripts": {
-    "dev": "node_modules\\.bin\\esbuild --bundle main.js --outfile=public/bundle.js --servedir=build",
+    "dev": "node_modules\\.bin\\esbuild --bundle main.js --outfile=public/bundle.js --servedir=public",
     "build": "node_modules\\.bin\\esbuild --bundle main.js --outfile=public/bundle.js"
   }
 }
