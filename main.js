@@ -13,7 +13,7 @@ app.stage.interactive = true;
 
 function onAssetsLoaded(loader, res) {
 	// create a spine boy
-	const spineBoyPro = new window.PIXI.spine.Spine(res.spineboypro.spineData);
+	const spineBoyPro = new Spine(res.spineboypro.spineData);
 
 	// set the position
 	spineBoyPro.x = app.screen.width / 2;

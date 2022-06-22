@@ -1,18 +1,16 @@
 {
   "name": "grayjoy-ts",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "dependencies": {
-    "esbuild": "^0.14.47",
     "pixi-spine": "^3.0.15",
-    "pixi.js": "^6.4.2",
-    "rollup": "^2.75.7"
+    "pixi.js": "^6.4.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "esbuild": "^0.14.47"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "dev": "node_modules\\.bin\\esbuild --bundle main.js --outfile=public/bundle.js --servedir=build",
+    "build": "node_modules\\.bin\\esbuild --bundle main.js --outfile=public/bundle.js"
+  }
 }
