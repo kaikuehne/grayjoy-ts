@@ -1,7 +1,11 @@
 import * as PIXI from 'pixi.js';
 import { Spine } from 'pixi-spine';
 
-const app = new PIXI.Application();
+const app = new PIXI.Application({
+	autoResize: true,
+	// resolution: devicePixelRatio,
+	backgroundColor: 0xFFFFFF
+});
 document.body.appendChild(app.view);
 
 // load spine data
@@ -11,9 +15,11 @@ app.loader
 
 app.stage.interactive = true;
 
+var spineBoyPro;
+
 function onAssetsLoaded(loader, res) {
 	// create a spine boy
-	const spineBoyPro = new Spine(res.spineboypro.spineData);
+	spineBoyPro = new Spine(res.spineboypro.spineData);
 
 	// set the position
 	spineBoyPro.x = app.screen.width / 2;
@@ -41,3 +47,16 @@ function onAssetsLoaded(loader, res) {
 		lastAnimation = animation;
 	});
 }
+
+window.addEventListener('resize', resize);
+
+// Resize function window
+function resize() {
+	app.renderer.resize(window.innerWidth, window.innerHeight);
+	if (spineBoyPro != null) {
+		spineBoyPro.x = app.screen.width / 2;
+		spineBoyPro.y = app.screen.height;
+	}
+}
+
+resize();
