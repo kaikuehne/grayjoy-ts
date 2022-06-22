@@ -47403,12 +47403,16 @@ void main() {
   SpineParser.registerLoaderPlugin();
 
   // main.js
-  var app = new Application();
+  var app = new Application({
+    autoResize: true,
+    backgroundColor: 16777215
+  });
   document.body.appendChild(app.view);
   app.loader.add("spineboypro", "spineboy-pro.json").load(onAssetsLoaded);
   app.stage.interactive = true;
+  var spineBoyPro;
   function onAssetsLoaded(loader, res) {
-    const spineBoyPro = new Spine4(res.spineboypro.spineData);
+    spineBoyPro = new Spine4(res.spineboypro.spineData);
     spineBoyPro.x = app.screen.width / 2;
     spineBoyPro.y = app.screen.height;
     spineBoyPro.scale.set(0.5);
@@ -47426,6 +47430,15 @@ void main() {
       lastAnimation = animation;
     });
   }
+  window.addEventListener("resize", resize);
+  function resize() {
+    app.renderer.resize(window.innerWidth, window.innerHeight);
+    if (spineBoyPro != null) {
+      spineBoyPro.x = app.screen.width / 2;
+      spineBoyPro.y = app.screen.height;
+    }
+  }
+  resize();
 })();
 /*
 object-assign
